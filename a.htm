@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Nutricional Completa</title>
+  <script src="a_data/3.4.16"></script>
+  <link rel="stylesheet" href="a_data/all.min.css">
+  <style>
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .input-highlight {
+      transition: all 0.3s ease;
+    }
+    .input-highlight:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+    }
+    .result-box {
+      transition: all 0.3s ease;
+    }
+    .result-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+  </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-4{margin-left:1rem}.mr-1{margin-right:0.25rem}.mr-2{margin-right:0.5rem}.mt-1{margin-top:0.25rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.block{display:block}.flex{display:flex}.grid{display:grid}.min-h-screen{min-height:100vh}.w-full{width:100%}.max-w-4xl{max-width:56rem}.items-start{align-items:flex-start}.justify-between{justify-content:space-between}.gap-6{gap:1.5rem}.gap-4{gap:1rem}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.whitespace-nowrap{white-space:nowrap}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.rounded{border-radius:0.25rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-b-2{border-bottom-width:2px}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-indigo-600{--tw-border-opacity:1;border-color:rgb(79 70 229 / var(--tw-border-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-indigo-50{--tw-bg-opacity:1;background-color:rgb(238 242 255 / var(--tw-bg-opacity, 1))}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-yellow-100{--tw-bg-opacity:1;background-color:rgb(254 249 195 / var(--tw-bg-opacity, 1))}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-3{padding:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-8{padding-top:2rem;padding-bottom:2rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.pb-2{padding-bottom:0.5rem}.text-center{text-align:center}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-indigo-500{--tw-text-opacity:1;color:rgb(99 102 241 / var(--tw-text-opacity, 1))}.text-indigo-600{--tw-text-opacity:1;color:rgb(79 70 229 / var(--tw-text-opacity, 1))}.text-indigo-700{--tw-text-opacity:1;color:rgb(67 56 202 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-red-700{--tw-text-opacity:1;color:rgb(185 28 28 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:bg-indigo-700:hover{--tw-bg-opacity:1;background-color:rgb(67 56 202 / var(--tw-bg-opacity, 1))}.hover\:text-indigo-600:hover{--tw-text-opacity:1;color:rgb(79 70 229 / var(--tw-text-opacity, 1))}@media (min-width: 768px){.md\:col-span-2{grid-column:span 2 / span 2}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}</style></head>
+<body class="bg-gray-50 min-h-screen">
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <header class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-indigo-700 mb-2">
+        <i class="fas fa-calculator mr-2"></i>Calculadora Nutricional Completa
+      </h1>
+      <p class="text-gray-600">Avaliação nutricional completa com recomendações personalizadas</p>
+    </header>
+
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+      <div class="flex border-b border-gray-200 overflow-x-auto">
+        <button class="tab-btn py-3 px-4 font-medium border-b-2 whitespace-nowrap text-gray-500" data-tab="dados">
+          <i class="fas fa-user-circle mr-2"></i>Dados Básicos
+        </button>
+        <button class="tab-btn py-3 px-4 font-medium hover:text-indigo-600 whitespace-nowrap text-gray-500" data-tab="resultados">
+          <i class="fas fa-chart-bar mr-2"></i>Resultados
+        </button>
+        <button class="tab-btn py-3 px-4 font-medium hover:text-indigo-600 whitespace-nowrap text-gray-500" data-tab="semiologia">
+          <i class="fas fa-stethoscope mr-2"></i>Semiologia
+        </button>
+        <button class="tab-btn py-3 px-4 font-medium hover:text-indigo-600 whitespace-nowrap border-indigo-600 text-indigo-600" data-tab="recomendacoes">
+          <i class="fas fa-clipboard-list mr-2"></i>Recomendações
+        </button>
+      </div>
+
+      <!-- Dados Básicos Tab -->
+      <div id="dados" class="tab-content p-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">
+          <i class="fas fa-user-edit mr-2 text-indigo-600"></i>Informações do Paciente
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-4">
+            <div>
+              <label for="peso" class="block text-gray-700 font-medium mb-1">Peso Atual (kg)</label>
+              <input type="number" id="peso" step="0.1" class="w-full px-4 py-2 border rounded-lg input-highlight" placeholder="Ex: 68.5" value="73">
+            </div>
+            
+            <div>
+              <label for="pesoUsual" class="block text-gray-700 font-medium mb-1">Peso Usual (kg)</label>
+              <input type="number" id="pesoUsual" step="0.1" class="w-full px-4 py-2 border rounded-lg input-highlight" placeholder="Ex: 72.0" value="76">
+            </div>
+            
+            <div>
+              <label for="pesoEdema" class="block text-gray-700 font-medium mb-1">Peso estimado do edema (kg)</label>
+              <input type="number" id="pesoEdema" step="0.1" value="0" class="w-full px-4 py-2 border rounded-lg input-highlight">
+            </div>
+            
+            <div>
+              <label for="altura" class="block text-gray-700 font-medium mb-1">Altura (cm)</label>
+              <input type="number" id="altura" step="0.1" class="w-full px-4 py-2 border rounded-lg input-highlight" placeholder="Ex: 170.0" value="174">
+            </div>
+          </div>
+          
+          <div class="space-y-4">
+            <div>
+              <label for="idade" class="block text-gray-700 font-medium mb-1">Idade (anos)</label>
+              <input type="number" id="idade" class="w-full px-4 py-2 border rounded-lg input-highlight" placeholder="Ex: 45" value="46">
+            </div>
+            
+            <div>
+              <label for="sexo" class="block text-gray-700 font-medium mb-1">Sexo</label>
+              <select id="sexo" class="w-full px-4 py-2 border rounded-lg input-highlight">
+                <option value="masculino" selected="selected">Masculino</option>
+                <option value="feminino">Feminino</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="etnia" class="block text-gray-700 font-medium mb-1">Etnia</label>
+              <select id="etnia" class="w-full px-4 py-2 border rounded-lg input-highlight">
+                <option value="branco" selected="selected">Branco</option>
+                <option value="negro">Negro</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="faseCritico" class="block text-gray-700 font-medium mb-1">Fase do paciente crítico</label>
+              <select id="faseCritico" class="w-full px-4 py-2 border rounded-lg input-highlight">
+                <option value="estavel" selected="selected">Estável</option>
+                <option value="critico1">Crítico - Dias 1 a 3</option>
+                <option value="critico2">Crítico - Dias 4 a 7</option>
+                <option value="critico3">Crítico - Após 7 dias</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <h2 class="text-xl font-semibold text-gray-800 mt-8 mb-4">
+          <i class="fas fa-ruler-combined mr-2 text-indigo-600"></i>Medidas Antropométricas
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label for="aj" class="block text-gray-700 font-medium mb-1">Altura do joelho (cm)</label>
+            <input type="number" id="aj" step="0.1" class="w-full px-4 py-2 border rounded-lg input-highlight" placeholder="Ex: 52.5" value="54.5">
+          </div>
+          
+          <div>
+            <label for="cb" class="block text-gray-700 font-medium mb-1">Circunferência do braço (cm)</label>
+            <input type="number" id="cb" step="0.1" class="w-full px-4 py-2 border rounded-lg input-highlight" placeholder="Ex: 28.0" value="26">
+          </div>
+        </div>
+        
+        <h2 class="text-xl font-semibold text-gray-800 mt-8 mb-4">
+          <i class="fas fa-sliders-h mr-2 text-indigo-600"></i>Personalização de Metas
+        </h2>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+          <div>
+            <label for="caloriaManual" class="block text-gray-700 font-medium mb-1">Meta calórica (kcal/kg)</label>
+            <input type="number" id="caloriaManual" step="0.1" class="w-full px-4 py-2 border rounded-lg input-highlight" placeholder="Opcional" value="30">
+          </div>
+          
+          <div>
+            <label for="proteinaManual" class="block text-gray-700 font-medium mb-1">Meta proteica (g/kg)</label>
+            <input type="number" id="proteinaManual" step="0.1" class="w-full px-4 py-2 border rounded-lg input-highlight" placeholder="Opcional" value="1.5">
+          </div>
+          
+          <div>
+            <label for="hidratacaoManual" class="block text-gray-700 font-medium mb-1">Hidratação (ml/kg)</label>
+            <input type="number" id="hidratacaoManual" step="1" class="w-full px-4 py-2 border rounded-lg input-highlight" placeholder="Ex: 30" value="35">
+          </div>
+        </div>
+        
+        <button onclick="calcular()" class="w-full mt-8 bg-indigo-600 text-white py-3 px-4 rounded-lg hover:bg-indigo-700 transition duration-300 font-medium">
+          <i class="fas fa-calculator mr-2"></i>Calcular Avaliação Nutricional
+        </button>
+      </div>
+
+      <!-- Resultados Tab -->
+      <div id="resultados" class="tab-content p-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-6">
+          <i class="fas fa-chart-pie mr-2 text-indigo-600"></i>Resultados da Avaliação
+        </h2>
+        
+        <div id="resultado" class="space-y-4">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="result-box bg-white p-4 rounded-lg border border-gray-200">
+            <h3 class="font-semibold text-indigo-700 mb-3 border-b pb-2">
+              <i class="fas fa-weight mr-2"></i>Dados Antropométricos
+            </h3>
+            <ul class="space-y-2">
+              <li class="flex justify-between">
+                <span><i class="fas fa-weight-scale mr-2 text-gray-500"></i>IMC:</span>
+                <span class="text-green-600 font-semibold">24.11 (Eutrofia)</span>
+              </li>
+              <li class="flex justify-between">
+                <span><i class="fas fa-ruler-vertical mr-2 text-gray-500"></i>Peso Estimado:</span>
+                <span>61.50 kg</span>
+              </li>
+              <li class="flex justify-between">
+                <span><i class="fas fa-ruler mr-2 text-gray-500"></i>Altura Estimada:</span>
+                <span>174.31 cm</span>
+              </li>
+              <li class="flex justify-between">
+                <span><i class="fas fa-bullseye mr-2 text-gray-500"></i>Peso Ideal (IMC 22):</span>
+                <span>66.61 kg</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="result-box bg-white p-4 rounded-lg border border-gray-200">
+            <h3 class="font-semibold text-indigo-700 mb-3 border-b pb-2">
+              <i class="fas fa-chart-line mr-2"></i>Avaliação Nutricional
+            </h3>
+            <ul class="space-y-2">
+              <li class="flex justify-between">
+                <span><i class="fas fa-adjust mr-2 text-gray-500"></i>Peso Corrigido:</span>
+                <span>73.00 kg</span>
+              </li>
+              <li class="flex justify-between">
+                <span><i class="fas fa-balance-scale mr-2 text-gray-500"></i>Peso Ajustado:</span>
+                <span>73.00 kg</span>
+              </li>
+              <li class="flex justify-between">
+                <span><i class="fas fa-percentage mr-2 text-gray-500"></i>Perda de Peso:</span>
+                <span class="text-green-600 font-semibold">3.95%</span>
+              </li>
+              <li class="flex justify-between">
+                <span><i class="fas fa-check-circle mr-2 text-gray-500"></i>Adequação do Peso:</span>
+                <span class="text-green-600 font-semibold">109.60%</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="result-box bg-white p-4 rounded-lg border border-gray-200 md:col-span-2">
+            <h3 class="font-semibold text-indigo-700 mb-3 border-b pb-2">
+              <i class="fas fa-utensils mr-2"></i>Recomendações Nutricionais
+            </h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="bg-indigo-50 p-3 rounded">
+                <span class="bg-yellow-100 px-2 py-1 rounded"><strong>Calorias estimadas:</strong> 2190.00 kcal/dia (personalizado)</span>
+              </div>
+              <div class="bg-indigo-50 p-3 rounded">
+                <span class="bg-yellow-100 px-2 py-1 rounded"><strong>Proteínas estimadas:</strong> 109.50 g/dia (personalizado)</span>
+              </div>
+              <div class="bg-indigo-50 p-3 rounded"><span class="bg-yellow-100 px-2 py-1 rounded"><strong>Hidratação estimada:</strong> 2555 ml/dia (personalizado)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <!-- Semiologia Tab -->
+      <div id="semiologia" class="tab-content p-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-6">
+          <i class="fas fa-stethoscope mr-2 text-indigo-600"></i>Semiologia Nutricional
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 p-5 rounded-lg">
+            <h3 class="font-semibold text-indigo-700 mb-3">
+              <i class="fas fa-user-circle mr-2"></i>Avaliação Física
+            </h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start">
+                <i class="fas fa-scissors text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Cabelo:</strong> ressecamento, queda, alopecia – possível deficiência de proteína, zinco, biotina.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-user text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Face:</strong> palidez, edema, descamação – deficiência de ferro, niacina, vitamina B2.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-tooth text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Gengivas:</strong> sangramento, edema – deficiência de vitamina C.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-lips text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Lábios:</strong> rachaduras, queilite angular – deficiência de riboflavina, ferro, niacina.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-smile text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Língua:</strong> avermelhada, lisa, dolorosa – deficiência de B12, ácido fólico, ferro, niacina.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-eye text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Olhos:</strong> cegueira noturna, xeroftalmia – deficiência de vitamina A.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-skin text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Pele:</strong> descamação, dermatite, hiperpigmentação – deficiência de zinco, vitamina A, B3.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-hand-paper text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Unhas:</strong> quebradiças, côncavas (coiloniquia) – deficiência de ferro, proteínas.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-gray-50 p-5 rounded-lg">
+            <h3 class="font-semibold text-indigo-700 mb-3">
+              <i class="fas fa-clipboard-check mr-2"></i>Exame Físico Nutricional
+            </h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start">
+                <i class="fas fa-stethoscope text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Abdome:</strong> distendido, com ascite – pode indicar desnutrição proteico-calórica.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-mouth text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Boca:</strong> alterações em mucosas e dentes – possíveis deficiências de vitamina C, B-complexo.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-circle text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Bola de gordura de Bichat:</strong> afundamento indica depleção de gordura subcutânea.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-bolt text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Face aguda:</strong> expressão alerta, típica de desnutrição aguda.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-hourglass-half text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Face crônica:</strong> expressão abatida, típica de desnutrição crônica.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-user-injured text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Fúrcula esternal/pescoço:</strong> proeminente = perda de musculatura peitoral.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-walking text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Membros inferiores:</strong> redução de massa muscular = atrofia, deficiência proteica.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-dumbbell text-indigo-500 mt-1 mr-2"></i>
+                <span><strong>Membros superiores:</strong> afundamento da têmpora = atrofia muscular, deficiência energética/proteica.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recomendações Tab -->
+      <div id="recomendacoes" class="tab-content p-6 active">
+        <h2 class="text-xl font-semibold text-gray-800 mb-6">
+          <i class="fas fa-clipboard-list mr-2 text-indigo-600"></i>Recomendações Nutricionais
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-indigo-50 p-5 rounded-lg">
+            <h3 class="font-semibold text-indigo-700 mb-3">
+              <i class="fas fa-fire-alt mr-2"></i>Recomendações Calóricas
+            </h3>
+            <ul class="space-y-3 text-gray-700">
+              <li>
+                <strong>Paciente estável com desnutrição ou risco nutricional:</strong>
+                <p class="text-sm text-gray-600 mt-1">30 a 35 kcal/kg/dia</p>
+              </li>
+              <li>
+                <strong>Paciente crítico:</strong>
+                <ul class="text-sm text-gray-600 mt-1 ml-4 space-y-1">
+                  <li>1º ao 3º dia: 15 a 20 kcal/kg/dia</li>
+                  <li>4º ao 7º dia: 25 a 30 kcal/kg/dia</li>
+                  <li>Após 7 dias: 30 kcal/kg/dia</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Paciente obeso:</strong>
+                <ul class="text-sm text-gray-600 mt-1 ml-4 space-y-1">
+                  <li>IMC 30–50 kg/m²: 11 a 14 kcal/kg/dia (peso atual)</li>
+                  <li>IMC &gt; 50 kg/m²: 22 a 25 kcal/kg/dia (peso ideal ou ajustado)</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-indigo-50 p-5 rounded-lg">
+            <h3 class="font-semibold text-indigo-700 mb-3">
+              <i class="fas fa-drumstick-bite mr-2"></i>Recomendações Proteicas
+            </h3>
+            <ul class="space-y-3 text-gray-700">
+              <li>
+                <strong>Paciente crítico:</strong>
+                <p class="text-sm text-gray-600 mt-1">1,2 a 2,0 g/kg/dia</p>
+              </li>
+              <li>
+                <strong>Paciente com sepse, trauma ou queimadura:</strong>
+                <p class="text-sm text-gray-600 mt-1">Até 2,5 g/kg/dia, conforme tolerância</p>
+              </li>
+              <li>
+                <strong>Paciente obeso crítico:</strong>
+                <ul class="text-sm text-gray-600 mt-1 ml-4 space-y-1">
+                  <li>IMC 30–40 kg/m²: 2,0 g/kg de peso ideal</li>
+                  <li>IMC &gt; 40 kg/m²: até 2,5 g/kg de peso ideal</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-6 bg-gray-50 p-4 rounded-lg">
+          <p class="text-sm text-gray-600">
+            <i class="fas fa-info-circle text-indigo-500 mr-1"></i>
+            <strong>Fontes:</strong> BRASPEN 2024, ESPEN 2024, ASPEN Guidelines 2024
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="mt-8 text-center text-gray-600 text-sm">
+      <p>© 2024 Calculadora Nutricional Completa - Todos os direitos reservados</p>
+    </footer>
+  </div>
+
+  <script>
+    // Tab functionality
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+        
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => {
+          btn.classList.remove('border-indigo-600', 'text-indigo-600');
+          btn.classList.add('text-gray-500');
+        });
+        
+        tabContents.forEach(content => {
+          content.classList.remove('active');
+        });
+        
+        // Add active class to clicked button and corresponding content
+        button.classList.add('border-indigo-600', 'text-indigo-600');
+        button.classList.remove('text-gray-500');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+
+    function calcular() {
+      const peso = parseFloat(document.getElementById('peso').value);
+      const pesoUsual = parseFloat(document.getElementById('pesoUsual').value);
+      const pesoEdema = parseFloat(document.getElementById('pesoEdema').value);
+      const altura_cm = parseFloat(document.getElementById('altura').value);
+      const altura_m = altura_cm / 100;
+      const idade = parseInt(document.getElementById('idade').value);
+      const sexo = document.getElementById('sexo').value;
+      const etnia = document.getElementById('etnia').value;
+      const aj = parseFloat(document.getElementById('aj').value);
+      const cb = parseFloat(document.getElementById('cb').value);
+
+      const imc = peso / (altura_m ** 2);
+
+      // Peso estimado
+      let pesoEstimado, alturaEstimada;
+      if (sexo === 'masculino' && etnia === 'branco') {
+        pesoEstimado = (1.19 * aj) + (3.21 * cb) - 86.82;
+        alturaEstimada = 71.85 + (1.88 * aj);
+      } else if (sexo === 'masculino') {
+        pesoEstimado = (1.09 * aj) + (3.14 * cb) - 83.72;
+        alturaEstimada = 73.42 + (1.79 * aj);
+      } else if (sexo === 'feminino' && etnia === 'branco') {
+        pesoEstimado = (1.01 * aj) + (2.81 * cb) - 60.04;
+        alturaEstimada = 70.25 + (1.87 * aj) - (0.06 * idade);
+      } else {
+        pesoEstimado = (1.24 * aj) + (2.97 * cb) - 82.48;
+        alturaEstimada = 68.10 + (1.87 * aj) - (0.06 * idade);
+      }
+
+      // Classificação IMC
+      let classificacaoIMC = '';
+      let imcClass = '';
+      if (imc < 16) {
+        classificacaoIMC = 'Magreza grau III';
+        imcClass = 'text-red-600 font-semibold';
+      } else if (imc < 17) {
+        classificacaoIMC = 'Magreza grau II';
+        imcClass = 'text-red-500 font-semibold';
+      } else if (imc < 18.5) {
+        classificacaoIMC = 'Magreza grau I';
+        imcClass = 'text-orange-500 font-semibold';
+      } else if (imc < 25) {
+        classificacaoIMC = 'Eutrofia';
+        imcClass = 'text-green-600 font-semibold';
+      } else if (imc < 30) {
+        classificacaoIMC = 'Sobrepeso';
+        imcClass = 'text-yellow-600 font-semibold';
+      } else if (imc < 35) {
+        classificacaoIMC = 'Obesidade grau I';
+        imcClass = 'text-red-500 font-semibold';
+      } else if (imc < 40) {
+        classificacaoIMC = 'Obesidade grau II';
+        imcClass = 'text-red-600 font-semibold';
+      } else {
+        classificacaoIMC = 'Obesidade grau III';
+        imcClass = 'text-red-700 font-semibold';
+      }
+
+      // Peso ideal baseado no IMC médio
+      let imcRef;
+      if (idade >= 60) {
+        imcRef = 24.5; // Idosos
+      } else if (sexo === 'masculino') {
+        imcRef = 22.0; // Homens adultos
+      } else {
+        imcRef = 20.8; // Mulheres adultas
+      }
+      
+      let pesoIdeal = (altura_m ** 2) * imcRef;
+
+      // Peso corrigido
+      let pesoCorrigido = peso - pesoEdema;
+
+      // Peso ajustado
+      let pesoAjustado;
+      if (imc > 30) {
+        pesoAjustado = (peso - pesoIdeal) * 0.25 + pesoIdeal;
+      } else if (imc < 18) {
+        pesoAjustado = (pesoIdeal - peso) * 0.25 + peso;
+      } else {
+        pesoAjustado = peso;
+      }
+
+      // Percentual de perda de peso
+      let percentualPerda = ((pesoUsual - peso) / pesoUsual) * 100;
+      let perdaClass = '';
+      if (percentualPerda > 10) {
+        perdaClass = 'text-red-600 font-semibold';
+      } else if (percentualPerda > 5) {
+        perdaClass = 'text-orange-500 font-semibold';
+      } else {
+        perdaClass = 'text-green-600 font-semibold';
+      }
+
+      // Adequação do peso
+      let adequacaoPeso = (peso / pesoIdeal) * 100;
+      let adequacaoClass = '';
+      if (adequacaoPeso < 70) {
+        adequacaoClass = 'text-red-600 font-semibold';
+      } else if (adequacaoPeso < 80) {
+        adequacaoClass = 'text-orange-500 font-semibold';
+      } else if (adequacaoPeso < 90) {
+        adequacaoClass = 'text-yellow-600 font-semibold';
+      } else {
+        adequacaoClass = 'text-green-600 font-semibold';
+      }
+
+      let calorias;
+      const fase = document.getElementById('faseCritico').value;
+      if (imc >= 30 && imc <= 50) {
+        calorias = peso * 12.5;
+      } else if (imc > 50) {
+        calorias = pesoIdeal * 23.5;
+      } else {
+        if (fase === 'critico1') calorias = peso * 17.5;
+        else if (fase === 'critico2') calorias = peso * 27.5;
+        else calorias = peso * 32.5;
+      }
+      
+      const caloriaManual = parseFloat(document.getElementById('caloriaManual').value);
+      const proteinaManual = parseFloat(document.getElementById('proteinaManual').value);
+      const hidratacaoManual = parseFloat(document.getElementById('hidratacaoManual').value);
+
+      if (!isNaN(caloriaManual)) {
+        calorias = imc > 50 ? pesoIdeal * caloriaManual : peso * caloriaManual;
+      }
+      
+      const proteinas = !isNaN(proteinaManual)
+        ? (imc >= 30 ? pesoIdeal * proteinaManual : peso * proteinaManual)
+        : (imc >= 30 ? pesoIdeal * 2.0 : peso * 1.5);
+
+      const hidratacao = !isNaN(hidratacaoManual) ? peso * hidratacaoManual : null;
+
+      let calTxt = `<strong>Calorias estimadas:</strong> ${calorias.toFixed(2)} kcal/dia`;
+      let protTxt = `<strong>Proteínas estimadas:</strong> ${proteinas.toFixed(2)} g/dia`;
+      let hidrTxt = hidratacao ? `<strong>Hidratação estimada:</strong> ${hidratacao.toFixed(0)} ml/dia` : '';
+
+      if (!isNaN(caloriaManual)) calTxt = `<span class="bg-yellow-100 px-2 py-1 rounded">${calTxt} (personalizado)</span>`;
+      if (!isNaN(proteinaManual)) protTxt = `<span class="bg-yellow-100 px-2 py-1 rounded">${protTxt} (personalizado)</span>`;
+      if (!isNaN(hidratacaoManual)) hidrTxt = `<span class="bg-yellow-100 px-2 py-1 rounded">${hidrTxt} (personalizado)</span>`;
+
+      // Format results with icons and better styling
+      const resultadoHTML = `
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="result-box bg-white p-4 rounded-lg border border-gray-200">
+            <h3 class="font-semibold text-indigo-700 mb-3 border-b pb-2">
+              <i class="fas fa-weight mr-2"></i>Dados Antropométricos
+            </h3>
+            <ul class="space-y-2">
+              <li class="flex justify-between">
+                <span><i class="fas fa-weight-scale mr-2 text-gray-500"></i>IMC:</span>
+                <span class="${imcClass}">${imc.toFixed(2)} (${classificacaoIMC})</span>
+              </li>
+              <li class="flex justify-between">
+                <span><i class="fas fa-ruler-vertical mr-2 text-gray-500"></i>Peso Estimado:</span>
+                <span>${pesoEstimado.toFixed(2)} kg</span>
+              </li>
+              <li class="flex justify-between">
+                <span><i class="fas fa-ruler mr-2 text-gray-500"></i>Altura Estimada:</span>
+                <span>${alturaEstimada.toFixed(2)} cm</span>
+              </li>
+              <li class="flex justify-between">
+                <span><i class="fas fa-bullseye mr-2 text-gray-500"></i>Peso Ideal (IMC ${imcRef}):</span>
+                <span>${pesoIdeal.toFixed(2)} kg</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="result-box bg-white p-4 rounded-lg border border-gray-200">
+            <h3 class="font-semibold text-indigo-700 mb-3 border-b pb-2">
+              <i class="fas fa-chart-line mr-2"></i>Avaliação Nutricional
+            </h3>
+            <ul class="space-y-2">
+              <li class="flex justify-between">
+                <span><i class="fas fa-adjust mr-2 text-gray-500"></i>Peso Corrigido:</span>
+                <span>${pesoCorrigido.toFixed(2)} kg</span>
+              </li>
+              <li class="flex justify-between">
+                <span><i class="fas fa-balance-scale mr-2 text-gray-500"></i>Peso Ajustado:</span>
+                <span>${pesoAjustado.toFixed(2)} kg</span>
+              </li>
+              <li class="flex justify-between">
+                <span><i class="fas fa-percentage mr-2 text-gray-500"></i>Perda de Peso:</span>
+                <span class="${perdaClass}">${percentualPerda.toFixed(2)}%</span>
+              </li>
+              <li class="flex justify-between">
+                <span><i class="fas fa-check-circle mr-2 text-gray-500"></i>Adequação do Peso:</span>
+                <span class="${adequacaoClass}">${adequacaoPeso.toFixed(2)}%</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="result-box bg-white p-4 rounded-lg border border-gray-200 md:col-span-2">
+            <h3 class="font-semibold text-indigo-700 mb-3 border-b pb-2">
+              <i class="fas fa-utensils mr-2"></i>Recomendações Nutricionais
+            </h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="bg-indigo-50 p-3 rounded">
+                ${calTxt}
+              </div>
+              <div class="bg-indigo-50 p-3 rounded">
+                ${protTxt}
+              </div>
+              ${hidrTxt ? `<div class="bg-indigo-50 p-3 rounded">${hidrTxt}</div>` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('resultado').innerHTML = resultadoHTML;
+      
+      // Switch to results tab after calculation
+      document.querySelector('[data-tab="resultados"]').click();
+    }
+  </script>
+
+</body></html>
